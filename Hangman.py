@@ -11,10 +11,10 @@ if letter in correctWord:
     print "Correct!"
     [letter]
 
+
     correctWord[2]
 
     replace(letter, space)
-
 
 def replace(letr, spce):
     if letr in correctWord:
