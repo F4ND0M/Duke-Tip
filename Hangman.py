@@ -15,22 +15,25 @@ def hanger():
     print'    |'
     print'---------'
 
-for turn in range(1, 100):
+for turn in range(1, 30):
     if turn == 1:
         print hanger()
         print space
     letter = raw_input('Guess a letter:')
-    if letter is not str:
-        print "This is not a letter."
+    for wrong in range(1, 6):
+        wrong = letter not in correctWord
+    #if letter is not str :
+     #   print "This is not a letter."
         #print "You've already choose this letter"
     if letter in correctWord:
         print "Correct!"
         value = correctWord.index(letter)
         correctWord[value]
+
         space = space.replace(space[value], letter)
         print space
         print hanger()
-    elif turn == 1:
+    elif wrong == 1:
         print "Incorrect."
         print'    |-----'
         print'    |    |'
@@ -40,7 +43,7 @@ for turn in range(1, 100):
         print'    |'
         print'    |'
         print'---------'
-    elif turn == 2:
+    elif wrong == 2:
         print "Incorrect."
         print'    |-----'
         print'    |    |'
@@ -50,7 +53,7 @@ for turn in range(1, 100):
         print'    |'
         print'    |'
         print'---------'
-    elif turn == 3:
+    elif wrong == 3:
         print "Incorrect."
         print'    |-----'
         print'    |    |'
@@ -60,7 +63,7 @@ for turn in range(1, 100):
         print'    |'
         print'    |'
         print'---------'
-    elif turn == 4:
+    elif wrong == 4:
         print "Incorrect."
         print'    |-----'
         print'    |    |'
@@ -70,7 +73,7 @@ for turn in range(1, 100):
         print'    |'
         print'    |'
         print'---------'
-    elif turn == 5:
+    elif wrong == 5:
         print "Incorrect."
         print'    |-----'
         print'    |    |'
@@ -80,7 +83,7 @@ for turn in range(1, 100):
         print'    |'
         print'    |'
         print'---------'
-    elif turn == 6:
+    elif wrong == 6:
         print "Incorrect."
         print'    |-----'
         print'    |    |'
