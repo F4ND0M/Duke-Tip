@@ -21,7 +21,8 @@ for turn in range(1, 30):
         print space
     letter = raw_input('Guess a letter:')
     for wrong in range(1, 6):
-        wrong = letter not in correctWord #number of times letter not in correctWord
+        wrong = letter not in correctWord
+        #number of times letter not in correctWord
     #if letter is not str : ADJUST AND ADD ONE FOR WORDS WITH DOUBLE LETTERS, ALREADY CHOSEN LETTERS, SPACING, WHEN WORD IS COMPLETED, MORE THAN ONE LETTER TYPED
      #   print "This is not a letter."
         #print "You've already choose this letter"
