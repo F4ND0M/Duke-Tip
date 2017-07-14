@@ -27,10 +27,10 @@ for turn in range(1, 30):
         #print "You've already choose this letter"
     if letter in correctWord:
         print "Correct!"
+        if space =
+        space = bytearray(space)
         value = correctWord.index(letter)
-        correctWord[value]
-
-        space = space.replace(space[value], letter)
+        space[value] = letter
         print space
         print hanger()
     elif wrong == 1:
