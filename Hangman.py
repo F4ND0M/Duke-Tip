@@ -3,7 +3,7 @@ import numpy
 words = ["dog", "cat", "chicken", "snake", "sheep"]
 correctWord = numpy.random.choice(words)
 
-space = '_ ' * len(correctWord)
+space = '_' * len(correctWord)
 
 def hanger():
     print'    |-----'
@@ -27,7 +27,8 @@ for turn in range(1, 30):
         #print "You've already choose this letter"
     if letter in correctWord:
         print "Correct!"
-        if space =
+        if space <= len(correctWord):
+            space = space[:-1]
         space = bytearray(space)
         value = correctWord.index(letter)
         space[value] = letter
