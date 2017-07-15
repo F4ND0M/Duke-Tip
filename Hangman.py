@@ -24,9 +24,9 @@ def hangman(wrong): #hangman picture
         print'    |   / \\'
     else:
         print'    |'
-    print'    |'
-    print'    |'
-    print'---------'
+        print'    |'
+        print'    |'
+        print'---------'
 
 def printBlanks(word): #if the word is solved
     solved = True
@@ -45,6 +45,7 @@ correctWord = numpy.random.choice(words)#random word
 correct = []
 incorrect = []
 guesses = []
+
 while True:
     hangman(wrongGuess)
     solved = printBlanks(correctWord)
@@ -65,4 +66,3 @@ while True:
         print "You have lost."
         print "The word was : " + correctWord
         break
-    print ""
