@@ -1,112 +1,68 @@
 import numpy
 
-words = ["dog", "cat"] #"rooster", "snake", "sheep", "monkey", "pig", "horse", "dragon", "rabbit", "cow", 'mouse', 'tiger']
-correctWord = numpy.random.choice(words)
-guesses = []
-# if letter is not str : ADJUST AND ADD ONE FOR WORDS WITH DOUBLE LETTERS, SPACING, WHEN WORD IS COMPLETED, MORE THAN ONE LETTER TYPED
+wrongGuess = 0
 
-space = '_ ' * len(correctWord)
-
-def hanger():
-    print'    |-----'
-    print'    |    |'
-    print'    |'
-    print'    |'
-    print'    |'
+def hangman(wrong): #hangman picture
+    if wrong >= 1:
+        print'    |-----'
+        print'    |    |'
+        print'    |    O'
+    else:
+        print'    |-----'
+        print'    |    |'
+    if wrong == 2:
+        print'    |    |'
+    if wrong == 3:
+        print'    |   /|'
+    if wrong >= 4:
+        print'    |   /|\\'
+    else:
+        print'    |'
+    if wrong == 5:
+        print'    |   /'
+    elif wrong >= 6:
+        print'    |   / \\'
+    else:
+        print'    |'
     print'    |'
     print'    |'
     print'---------'
-wrongGuess = 0
 
-for turn in range(1, 30):
-    if turn == 1:
-        print'    |-----'
-        print'    |    |'
-        print'    |'
-        print'    |'
-        print'    |'
-        print'    |'
-        print'    |'
-        print'---------'
-        print space
-    letter = raw_input('Guess a letter:')
-    if letter in guesses:
-        print "You've already choose this letter."
-    guesses.append(letter)
-    if letter in correctWord:
-        print "Correct!"
-        space = bytearray(space)
-        if correctWord.index(letter) == 1:
-            value = correctWord.index(letter)
+def printBlanks(word): #if the word is solved
+    solved = True
+    for l in word:
+        if l in correct:
+            print l + " ",
         else:
-            value = correctWord.index(letter) + 2
-        space[value] = letter
-        print space
-        print hanger()
-    if letter not in correctWord:
+            print "_ ",
+            solved = False
+    print ""
+    return solved
+
+words = ["dog", "cat", "rooster", "snake", "sheep", "monkey", "pig", "horse", "dragon", "rabbit", "cow", 'mouse', 'tiger'] #arangement of words
+
+correctWord = numpy.random.choice(words)#random word
+correct = []
+incorrect = []
+guesses = []
+while True:
+    hangman(wrongGuess)
+    solved = printBlanks(correctWord)
+    if solved:
+        print('You have won!')
+        break
+    letter = raw_input("Guess a letter: ")
+    if letter in guesses: #words chosen more than once
+        print "You have already choose this letter."
+    guesses.append(letter) #to make sure word isnt chosen twice
+    if letter in correctWord:
+        correct.append(letter)
+    else:
+        print "Incorrect."
         wrongGuess += 1
-man(wrongGuess)
-def man(wrong):
-    if wrong >= 1:
-        print "Incorrect."
-        print'    |-----'
-        print'    |    |'
-        print'    |    O'
-        print'    |'
-        print'    |'
-        print'    |'
-        print'    |'
-        print'---------'
-        print space
-    elif wrong == 2:
-        print "Incorrect."
-        print'    |-----'
-        print'    |    |'
-        print'    |    O'
-        print'    |    |'
-        print'    |'
-        print'    |'
-        print'    |'
-        print'---------'
-    elif wrong == 3:
-        print "Incorrect."
-        print'    |-----'
-        print'    |    |'
-        print'    |    O'
-        print'    |   /|'
-        print'    |'
-        print'    |'
-        print'    |'
-        print'---------'
-    elif wrong == 4:
-        print "Incorrect."
-        print'    |-----'
-        print'    |    |'
-        print'    |    O'
-        print'    |   /|\\'
-        print'    |'
-        print'    |'
-        print'    |'
-        print'---------'
-    elif wrong == 5:
-        print "Incorrect."
-        print'    |-----'
-        print'    |    |'
-        print'    |    O'
-        print'    |   /|\\'
-        print'    |   /'
-        print'    |'
-        print'    |'
-        print'---------'
-    elif wrong == 6:
-        print "Incorrect."
-        print'    |-----'
-        print'    |    |'
-        print'    |    O'
-        print'    |   /|\\'
-        print'    |   / \\'
-        print'    |'
-        print'    |'
-        print'---------'
-        print 'You lost.'
-        print 'The word was ' + correctWord + '.'
+    if wrongGuess == 6: #when hangman is completed
+        print ""
+        print "You have lost."
+        print "The word was : " + correctWord
+        break
+    print ""
