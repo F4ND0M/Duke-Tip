@@ -39,8 +39,7 @@ def printBlanks(word): #if the word is solved
     print ""
     return solved
 
-words = ["dog", "cat", "rooster", "snake", "sheep", "monkey", "pig", "horse", "dragon", "rabbit", "cow", 'mouse', 'tiger'] #arangement of words
-
+words = ["dog", "cat", "rooster", "snake", "sheep", "monkey", "pig", "horse", "dragon", "rabbit", "cow", 'mouse', 'tiger', 'copper', 'explain', 'ill-fated', 'truck', 'neat', 'unite', 'branch', 'educated', 'tenuous', 'hum', 'decisive', 'notice']
 correctWord = numpy.random.choice(words)#random word
 correct = []
 incorrect = []
