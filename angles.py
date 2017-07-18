@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-x = [-40, -29, 0, 20, 40, 60, 80]#angles
+x = [-40, -20, 0, 20, 40, 60, 80]#angles
 y = [65.33333333, 130, 383.6666667, 642.6666667, 717.6666667, 626, 365.3333333]#distances
 
 graph = np.polyfit(x, y, 4)

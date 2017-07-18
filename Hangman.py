@@ -50,7 +50,14 @@ while True:
     solved = printBlanks(correctWord)
     if solved:
         print('You have won!')
-        break
+        again = raw_input("Do you want to play again? ")
+        if again == "yes":#, "y", "Yes", "Y":
+            continue
+        elif again == "no":#, "n", "No", "N":
+            break
+        else:
+            print "This is not a valid answer."
+            break
     letter = raw_input("Guess a letter: ")
     if letter in guesses: #words chosen more than once
         print "You have already choose this letter."
@@ -61,7 +68,23 @@ while True:
         print "Incorrect."
         wrongGuess += 1
     if wrongGuess == 6: #when hangman is completed
-        print ""
+        print'    |-----'
+        print'    |    |'
+        print'    |    O'
+        print'    |   /|\\'
+        print'    |   / \\'
+        print'    |'
+        print'---------'
         print "You have lost."
         print "The word was : " + correctWord
-        break
+        while True:
+            again = raw_input("Do you want to play again? ")
+            if again == "yes":#, "y", "Yes", "Y":
+                continue
+            elif again == "no":#, "n", "No", "N":
+                print "Thank you for playing."
+                break
+            else:
+                print "This is not a valid answer."
+                break
+            break
