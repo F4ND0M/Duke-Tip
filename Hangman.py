@@ -51,13 +51,14 @@ while True:
     if solved:
         print('You have won!')
         again = raw_input("Do you want to play again? ")
-        if again == "yes":#, "y", "Yes", "Y":
-            continue
-        elif again == "no":#, "n", "No", "N":
-            break
+        if again == "yes":  # , "y", "Yes", "Y":
+            wrongGuess == 0
+        elif again == "no":  # , "n", "No", "N":
+            print "Thank you for playing."
+            exit (0)
         else:
             print "This is not a valid answer."
-            break
+            exit (0)
     letter = raw_input("Guess a letter: ")
     if letter in guesses: #words chosen more than once
         print "You have already choose this letter."
@@ -80,11 +81,10 @@ while True:
         while True:
             again = raw_input("Do you want to play again? ")
             if again == "yes":#, "y", "Yes", "Y":
-                continue
+                wrongGuess == 0
             elif again == "no":#, "n", "No", "N":
                 print "Thank you for playing."
-                break
+                exit(0)
             else:
                 print "This is not a valid answer."
-                break
-            break
+                exit(0)

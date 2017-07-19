@@ -28,3 +28,15 @@ print randomM.argmax(axis = 1)
 print np.argwhere(randomM == randomM.max())
 print randomM.mean()
 print np..
+
+
+print ptps[0]
+for i in range[2]:
+    print str(i)+ "product id" + str(producttotal purchasesorted[i][0])
+
+while productsprinted <2:
+    id = producttoalpurchasessorted[i][0]
+    if productpurchadecount[id] >= 2:
+        print str(i) + ".product id:" + str(id() +\ " " + productDict[id]
+        productsprinted += 1)
+    i += 1
