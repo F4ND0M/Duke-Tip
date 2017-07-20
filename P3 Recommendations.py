@@ -118,11 +118,11 @@ print(movieRatingS)
 # Top 10 Movies
 print("Top Ten Movies:")
 for movie in range(10):
-    title = movieDict['names']
-    id = movieNames['id']
-    rating = movieRatingS[id][1]
-    count = movieRatingCount[id][1]
-    print (".  Title: " + title + "  id: " + id + "  rating: " + rating + "  count of reviews: " + count)
+    id = movieRatingS[movie][0]
+    title = movieDict[id]
+    rating = movieRatingS[movie][1]
+    count = movieRatingCount[id]
+    print (str(movie+ 1) + ".  Title: " + title + "  id: " + str(id) + "  rating: " + str(rating) + "  count of reviews: " + str(count))
 # TODO Print the top 10 movies
 # It should print the number, title, id, rating and count of reviews for each movie
 # ie 2. Someone Else's America (1995) (ID: 1599) Rating: 5.0 Count: 1
@@ -130,14 +130,21 @@ for movie in range(10):
 
 # Top 10 Movies with at least 100 ratings    
 print("\n\nTop Ten movies with at least 100 ratings:")
-#for :
- #   print
+movie = 0
+printed = 0
+while printed < 10:
+    id = movieRatingS[movie][0]
+    title = movieDict[id]
+    rating = movieRatingS[movie][1]
+    count = movieRatingCount[id]
+    if count >= 100:
+        print (str(movie+ 1) + ".  Title: " + title + "  id: " + str(id) + "  rating: " + str(rating) + "  count of reviews: " + str(count))
+        printed += 1
+    movie += 1
 # TODO It should print the same thing, but this time all the movies should have over 100 ratings
 # The number should be the movie's absolute rank
 # ie (16. Close Shave, A (1995) (ID: 408) Rating: 4.49 Count: 112)
 # Number 16 is first in this list because it's the first movie with over 100 ratings
-
-exit(0) # Remove this line after we finish phase 2
 
 ########################################################
 # Begin Phase 3
@@ -148,13 +155,21 @@ exit(0) # Remove this line after we finish phase 2
 # Create a numpy ndarray of zeros with demensions of max user id + 1 and max movie + 1 (because we'll use them as 1 indexed not zero indexed)
 
 # Find the max movie ID + 1
-maxMovie = 0 # TODO replace 0 with the correct code
+maxMovie = movieData['movieID'].max() + 1
 
 # Find the max user Id + 1
-maxUser = 0 # TODO replace 0 with the correct code
+maxUser = movieData['userID'].max() + 1
+print(maxUser)
 
 # Create an array of 0s which will fill in with 1s when a user likes a movie
 userLikes = np.zeros((maxUser, maxMovie))
+
+
+for i in range(0, maxUser):
+    x = 0
+    if userLikes[i, x] == 4 or 5:
+        userLikes[i, x] == 1
+    x += 1
 
 # TODO Go through all the rows of the movie data.
 # If the user rated a movie as 4 or 5 set userLikes to 1 for that user and movie

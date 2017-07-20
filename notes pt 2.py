@@ -40,3 +40,47 @@ while productsprinted <2:
         print str(i) + ".product id:" + str(id() +\ " " + productDict[id]
         productsprinted += 1)
     i += 1
+
+
+
+
+maxmovie = moviedata['userID'].max()
+
+userlike = np.zeros((4,5))
+
+for i in range(0, 3):
+    userlike[i, 2] = 1
+
+print userlikes
+
+ilike = [4, 2]
+
+ilikeNP = np.zeros(5)
+
+for id in ilike:
+    ilikeNP[id] = 1
+
+ilikeNP[3] = 40
+
+print ilikeNP.argmax()
+
+maxID = ilikeNP.argmax()
+print maxID
+ilikeNP[maxID] = 0
+maxID = ilikeNP.argmax()
+print maxID
+
+list = np.argwhere(userlike[1,:]==1)
+print list
+print list.flatten()
+
+maxmovie = 5
+userlike = [matrix thingy]
+
+ilike[2, 4]
+ilikeNp = np.zeros(maxmovie)
+for id in ilike:
+    ilikeNP[id] = 1
+
+andSum = ilikeNP *userlike
+print andSum.sum(axis = 1)
