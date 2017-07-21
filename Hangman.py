@@ -25,7 +25,6 @@ def hangman(wrong): #hangman picture
     else:
         print'    |'
         print'    |'
-        print'    |'
         print'---------'
 
 def printBlanks(word): #if the word is solved

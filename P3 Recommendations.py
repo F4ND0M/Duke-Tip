@@ -7,16 +7,16 @@ import numpy as np
 
 def findSimilar(iLikeNp, userLikes):
     # Create an And similarity
-    similarityAnd = 0 # TODO replace 0 with the correct code
+    similarityAnd = iLikeNp * userLikes # TODO replace 0 with the correct code
     # Create a per user sum (this is the numerator of the jaccard index)
-    similarityAndSum = 0 # TODO replace 0 with the correct code
+    similarityAndSum = similarityAnd.sum(axis = 1) # TODO replace 0 with the correct code
     # Create an Or similarity
-    userSimilarityOr = 0 # TODO replace 0 with the correct code
+    userSimilarityOr = userLikes + iLikeNp # TODO replace 0 with the correct code
     # Create a per user union sum (this is the denominator of the jaccard index)
-    similarityOrSum = 0 # TODO replace 0 with the correct code
+    similarityOrSum = (userSimilarityOr - similarityAnd).sum(axis = 1) # TODO replace 0 with the correct code
     
     # Calculate the similarity
-    userSimilarity = 0 # TODO replace 0 with the correct code to calculate the Jaccard Index for each user
+    userSimilarity = similarityAndSum / similarityOrSum # TODO replace 0 with the correct code to calculate the Jaccard Index for each user
     
     # Make the most similar user has a new like that the previous user did not have
     # I used a while loop.
@@ -26,24 +26,29 @@ def findSimilar(iLikeNp, userLikes):
     # TODO Write the loop
     
     # TODO Print the max similarity number (most times this is something like 0.17
-    
+    maxIndex = userSimilarity.argmax()
+    print (userSimilarity[maxIndex])
     # Return the index of the user which is the best match
     return maxIndex
     
 def printMovie(id):
+    id = movieData['movieID']
+    name = movieNames[id]
     # Print the id of the movie and the name.  This should look something like
     # "    - 430: Duck Soup (1933)" if the id is 430 and the name is Duck Soup (1933)
-    print(0) # TODO replace 0 with the correct code
+    print(str(id) + ": " + name) # TODO replace 0 with the correct code
 
 def processLikes(iLike):
     print("\n\nSince you like:")
-    
+    for movieData['rating'] > 5:
+        printMovie()
     # TODO Print the name of each movie the user reported liking
     # Hint: Use a for loop and the printMovie function.
 
     # Convert iLike into an array of 0's and 1's which matches the array for other users
     # It should have one column for each movie (just like the userLikes array)
     # Start with all zeros, then fill in a 1 for each movie the user likes
+    iLike = np.zeros(maxMovie)
     iLikeNp = 0 # TODO replace 0 with the code to make the array of zeros
     # TODO You'll need a few more lines of code to fill in the 1's as needed
 
@@ -159,18 +164,14 @@ maxMovie = movieData['movieID'].max() + 1
 
 # Find the max user Id + 1
 maxUser = movieData['userID'].max() + 1
-print(maxUser)
 
 # Create an array of 0s which will fill in with 1s when a user likes a movie
 userLikes = np.zeros((maxUser, maxMovie))
 
 
-for i in range(0, maxUser):
-    x = 0
-    if userLikes[i, x] == 4 or 5:
-        userLikes[i, x] == 1
-    x += 1
-
+for i in movieData:
+    if i['rating'] == 4 or i['rating'] == 5:
+        userLikes[ i['userID'], i['movieID']] == 1
 # TODO Go through all the rows of the movie data.
 # If the user rated a movie as 4 or 5 set userLikes to 1 for that user and movie
 # Note: You'll need a for loop and an if statement
